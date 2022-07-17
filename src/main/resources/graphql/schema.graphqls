@@ -1,0 +1,19 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable", "@tag"])
+
+type Query @tag(name: "social-media") {
+    """Fetch user by providing userId"""
+    address(userId: Int): Address
+}
+
+type Address @tag(name: "social-media") @key(fields: "userId") {
+    userId: Int
+    street: String
+    suite: String
+    city: String
+    zipcode: String
+    geo: Geo
+}
+type Geo @tag(name: "social-media") {
+    lat: String
+    lng: String
+}
